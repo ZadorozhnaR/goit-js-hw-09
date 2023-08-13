@@ -16,3 +16,7 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.data-start:disabled {
+  background-color: #c1c1c1;
+}
