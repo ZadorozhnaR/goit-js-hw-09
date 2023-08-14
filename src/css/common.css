@@ -20,3 +20,21 @@ img {
 .data-start:disabled {
   background-color: #c1c1c1;
 }
+
+.timer {
+  display: flex;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.value {
+  font-size: 30;
+}
+
+.label {
+  font-size: 20;
+}
