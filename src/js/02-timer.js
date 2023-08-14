@@ -31,7 +31,7 @@ flatpickr(inputDate, options);
 function dateCheck(selectedDates) {
   selectedDate = selectedDates[0].getTime();
   currentDate = new Date().getTime();
-  if (selectedDates < currentDate) {
+  if (selectedDate < currentDate) {
     window.alert('Please choose a date in the future');
   } else {
     btnStart.disabled = false;
