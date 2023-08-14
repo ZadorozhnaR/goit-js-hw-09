@@ -14,7 +14,7 @@ let currentDate = null;
 let selectedDate = null;
 let remaining = 0;
 const delay = 1000;
-timerId = null;
+intervalId = null;
 
 const options = {
   enableTime: true,
@@ -39,7 +39,7 @@ function dateCheck(selectedDates) {
 }
 
 function timer() {
-  timerId = setInterval(() => {
+  intervalId = setInterval(() => {
     currentDate = new Date().getTime();
     if (selectedDate - currentDate <= 1000) {
       clearInterval(timerId);
