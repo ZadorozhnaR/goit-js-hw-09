@@ -14,7 +14,7 @@ let currentDate = null;
 let selectedDate = null;
 let remaining = 0;
 const delay = 1000;
-intervalId = null;
+let intervalId = null;
 
 const options = {
   enableTime: true,
