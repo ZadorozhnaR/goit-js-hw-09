@@ -6,7 +6,30 @@ const refs = {
   formAmount: document.querySelector('[name="amount"]'),
 };
 
-refs.form.addEventListener('click', fuctionCreatePromise);
+refs.form.addEventListener('submit', fuctionCreatePromise);
+
+function fuctionCreatePromise(e) {
+  e.preventDefault();
+
+  let delay = Number(refs.firstDelay.value);
+  let step = Number(refs.delayStep.value);
+  let amount = Number(refs.formAmount.value);
+  let position = 0;
+
+  for (let i = 1; i <= amount; i += 1) {
+    position = i;
+
+    createPromise(position, delay)
+      .then(({ position, delay }) => {
+        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      })
+      .catch(({ position, delay }) => {
+        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+      });
+    delay += step;
+  }
+  refs.form.reset();
+}
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -19,24 +42,4 @@ function createPromise(position, delay) {
       }
     }, delay);
   });
-}
-
-function fuctionCreatePromise(e) {
-  e.preventDefault();
-
-  let delay = Number(refs.firstDelay.value);
-  let step = Number(refs.delayStep.value);
-  let amount = Number(refs.formAmount.value);
-
-  for (let i = 1; i <= amount; i += 1) {
-    let promiseDelay = delay + step * i;
-
-    createPromise(i, promiseDelay)
-      .then(({ position, delay }) => {
-        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-      })
-      .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-      });
-  }
 }
